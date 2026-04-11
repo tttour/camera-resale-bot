@@ -1,0 +1,12 @@
+﻿=== 繧ｭ繧ｿ繝繝ｩ a.product-link 繧ｵ繝ｳ繝励Ν ===
+{"href": "/ec/used/2445050055743?qid=dc9eeb74-b546-4779-b3a2-dd81bc490", "name": "", "price": 0, "textSample": ""}
+{"href": "/ec/used/2445050055743?qid=dc9eeb74-b546-4779-b3a2-dd81bc490", "name": "繧ｭ繝､繝弱Φ EOS R6 MarkII 繝懊ョ繧｣", "price": 231400, "textSample": "繧ｭ繝､繝弱Φ EOS R6 MarkII 繝懊ョ繧｣|萓｡譬ｼ:231,400蜀・AB (濶ｯ蜩・"}
+{"href": "/ec/used/2448600067531?qid=dc9eeb74-b546-4779-b3a2-dd81bc490", "name": "", "price": 0, "textSample": ""}
+{"href": "/ec/used/2448600067531?qid=dc9eeb74-b546-4779-b3a2-dd81bc490", "name": "繧ｭ繝､繝弱Φ EOS R6 MarkII 繝懊ョ繧｣", "price": 222500, "textSample": "繧ｭ繝､繝弱Φ EOS R6 MarkII 繝懊ョ繧｣|萓｡譬ｼ:222,500蜀・B (荳ｦ蜩・"}
+{"href": "/ec/used/2484140009389?qid=dc9eeb74-b546-4779-b3a2-dd81bc490", "name": "", "price": 0, "textSample": ""}
+\n=== 繝｡繝ｫ繧ｫ繝ｪ li[data-testid] 繧ｵ繝ｳ繝励Ν ===
+{"testid": "category_id", "price": 0, "textSample": "繧ｫ繝・ざ繝ｪ繝ｼ", "ariaLabels": []}
+{"testid": "brand_id", "price": 0, "textSample": "繝悶Λ繝ｳ繝・, "ariaLabels": []}
+{"testid": "f42ae390-04ff-46ea-808b-f5d97cb45db4", "price": 0, "textSample": "繧ｵ繧､繧ｺ", "ariaLabels": []}
+{"testid": "status", "price": 0, "textSample": "雋ｩ螢ｲ迥ｶ豕－縺吶∋縺ｦ|雋ｩ螢ｲ荳ｭ|螢ｲ繧雁・繧・, "ariaLabels": []}
+{"testid": "item_types", "price": 0, "textSample": "蜃ｺ蜩∬・, "ariaLabels": []}

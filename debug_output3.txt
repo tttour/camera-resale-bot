@@ -1,0 +1,13 @@
+﻿{
+  "selectors": {
+    "ul li": 175,
+    "[role=\"listitem\"]": 4,
+    "figure": 20,
+    "img[alt]": 22,
+    "[data-location]": 42
+  },
+  "priceCount": 0,
+  "priceTexts": [],
+  "liSamplesWithPrice": [],
+  "htmlSample": "38c5e32f52c53.js\\\",\\\"49698\\\",\\\"static/chunks/49698-a741282e8ee8fa5f.js\\\",\\\"61168\\\",\\\"static/chunks/61168-cd99291fbbb051ff.js\\\",\\\"10944\\\",\\\"static/chunks/10944-6c1b508d9dff68fc.js\\\",\\\"22673\\\",\\\"static/chunks/22673-377b887b1383a99d.js\\\",\\\"67740\\\",\\\"static/chunks/67740-907a3989c5bc995f.js\\\",\\\"97255\\\",\\\"static/chunks/97255-6ce63ea78b5b860c.js\\\",\\\"30951\\\",\\\"static/chunks/30951-cdaa2dbbe41b0d52.js\\\",\\\"43138\\\",\\\"static/chunks/43138-b3d484e072a77245.js\\\",\\\"74546\\\",\\\"static/chunks/74546-b538498b50360d81.js\\\",\\\"37365\\\",\\\"static/chunks/37365-e09801f9cb596a8d.js\\\",\\\"70462\\\",\\\"static/chunks/70462-b4423185925a77d6.js\\\",\\\"81181\\\",\\\"static/chunks/81181-5c4f047960fa3b06.js\\\",\\\"30962\\\",\\\"static/chunks/30962-fa7bd94b33e6938b.js\\\",\\\"94693\\\",\\\"static/chunks/94693-b26c56ec967fda02.js\\\",\\\"69060\\\",\\\"static/chunks/69060-3c70fb6df95d1fa4.js\\\",\\\"15037\\\",\\\"static/chunks/15037-92043d855ca1578d.js\\\",\\\"44197\\\",\\\"static/chunks/44197-671e85aa27dcc603.js\\\",\\\"91553\\\",\\\"static/chunks/91553-87439d4106f200de.js\\\",\\\"32521\\\",\\\"static/chunks/32521-734fd53428d32ec4.js\\\",\\\"47845\\\",\\\"static/chunks/47845-f31ea65f4e58c837.js\\\",\\\"35230\\\",\\\"static/chunks/app/%5Blocale%5D/search/page-d373946d4d376ce1.js\\\"],\\\"LayoutRoute\\\"]\\n\"])</script><script>self.__next_f.push([1,\"15:I[24099,[\\\"45974\\\",\\\"static/chunks/5010bf3d-43ef832efabd9836.js\\\",\\\"10387\\\",\\\"static/chunks/10387-4983f080287356db.js\\\",\\\"75181\\\",\\\"static/chunks/75181-346739e3537ec289.js\\\",\\\"33125\\\",\\\"static/chunks/33125-9030765120a2ac87.js\\\",\\\"96626\\\",\\\"static/chunks/96626-67f1635d23e5ee29.js\\\",\\\"42959\\\",\\\"static/chunks/42959-3d3b96fa652856db.js\\\",\\\"16652\\\",\\\"static/chunks/16652-e77808fc58356879.js\\\",\\\"9986\\\",\\\"static/chunks/9986-24e38c5e32f52c53.js\\\",\\\"49698\\\",\\\"static/chunks/49698-a741282e8ee8fa5f.js\\\",\\\"61168\\\",\\\"static/chunks/61168-cd99291fbbb051ff.js\\\",\\\"10944\\\",\\\"static/chunks/10944-6c1b508d9dff68fc.js\\\",\\\"22673\\\",\\\"static/chunks/22673-377b887b1383a99d.js\\\",\\\"67740\\\",\\\"static/chunks/67740-907a3989c5bc995f.js\\\",\\\"97255\\\",\\\"static/chunks/97255-6ce63ea78b5b860"
+}

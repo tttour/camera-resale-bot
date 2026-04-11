@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+
+# Logs and databases
+logs/
+*.log
+results/
+*.json
+!config.json
+!config.sample.json
+
+# OS
+.DS_Store
+Thumbs.db
