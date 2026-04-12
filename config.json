@@ -16,9 +16,9 @@
     "email_settings": {
       "smtp_server": "smtp.gmail.com",
       "smtp_port": 587,
-      "sender_email": "yuichiro.s32@gmail.com",
-      "sender_password": "mughkydoxrbsciwb",
-      "receiver_email": "suzuki.yuichiro@libertad-corp.jp"
+      "sender_email": "",
+      "sender_password": "",
+      "receiver_email": ""
     }
   },
   "kitamura": {
