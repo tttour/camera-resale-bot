@@ -6,7 +6,7 @@
     "profit_margin_rate": 0.15,
     "top_cameras_count": 10,
     "same_type_max_pages": 3,
-    "target_conditions": ["A", "AB"],
+    "target_conditions": ["A", "AB", "B"],
     "target_store_keywords": ["東京", "新宿", "銀座", "日本橋", "秋葉原", "渋谷", "池袋", "上野", "品川", "横浜", "川崎", "大宮", "浦和", "千葉", "船橋", "柏", "町田", "立川", "八王子", "蒲田", "吉祥寺"],
     "headless": true,
     "request_delay_seconds": 2
