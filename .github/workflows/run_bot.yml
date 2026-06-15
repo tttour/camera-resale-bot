@@ -30,12 +30,19 @@ jobs:
 
     - name: Run Bot
       env:
-        # GitHubのSecretsから読み込む設定
         SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
         SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
         RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
       run: |
         python main.py
+
+    - name: Upload debug screenshots
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: debug-screenshots
+        path: "*.png"
+        if-no-files-found: ignore
 
     - name: Keep repository active (prevent workflow auto-disable)
       run: |

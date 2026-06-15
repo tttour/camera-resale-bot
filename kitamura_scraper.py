@@ -40,12 +40,30 @@ class KitamuraScraper:
     def _goto_and_wait(self, page: Page, url: str):
         """ページ遷移してDOM読み込みを待つ"""
         page.goto(url, wait_until="domcontentloaded", timeout=40000)
-        page.wait_for_timeout(3000)
+        page.wait_for_timeout(6000)  # Vue.js描画待ち (GitHub Actionsは遅いため長めに設定)
 
     def get_ranking_products(self, page: Page) -> list[KitamuraProduct]:
         """売れ筋ランキングから上位カメラを取得"""
         logger.info(f"ランキング取得開始: {self.RANKING_URL}")
         self._goto_and_wait(page, self.RANKING_URL)
+
+        # 診断ログ: ページ取得状況を確認
+        diag = page.evaluate("""
+            () => ({
+                title: document.title,
+                productLinks: document.querySelectorAll('a.product-link').length,
+                totalLinks: document.querySelectorAll('a').length,
+                bodyLength: document.body.innerText.length
+            })
+        """)
+        logger.info(f"ページ診断: タイトル='{diag['title']}', a.product-link数={diag['productLinks']}, 総リンク数={diag['totalLinks']}, テキスト長={diag['bodyLength']}")
+
+        # スクリーンショット保存 (GitHub Actionsのartifactとして確認可能)
+        try:
+            page.screenshot(path="debug_kitamura_actions.png", full_page=False)
+            logger.info("スクリーンショット保存: debug_kitamura_actions.png")
+        except Exception as e:
+            logger.warning(f"スクリーンショット失敗: {e}")
 
         products_data = page.evaluate("""
             () => {
