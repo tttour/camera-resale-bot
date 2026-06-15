@@ -38,9 +38,17 @@ class KitamuraScraper:
         self.target_store_keywords = config["settings"].get("target_store_keywords", [])
 
     def _goto_and_wait(self, page: Page, url: str):
-        """ページ遷移してDOM読み込みを待つ"""
+        """ページ遷移してコンテンツが描画されるまで待つ"""
         page.goto(url, wait_until="domcontentloaded", timeout=40000)
-        page.wait_for_timeout(6000)  # Vue.js描画待ち (GitHub Actionsは遅いため長めに設定)
+        # Vue.js描画完了を「リンクが出現するまで待つ」方式で確実に検知
+        try:
+            page.wait_for_selector(
+                'a[href*="/ec/used/"], a.product-link, main',
+                timeout=25000
+            )
+        except Exception:
+            # タイムアウトしても処理は続行
+            page.wait_for_timeout(5000)
 
     def get_ranking_products(self, page: Page) -> list[KitamuraProduct]:
         """売れ筋ランキングから上位カメラを取得"""
