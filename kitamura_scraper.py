@@ -68,15 +68,19 @@ class KitamuraScraper:
         products_data = page.evaluate("""
             () => {
                 const results = [];
+                const seen = new Set();
+
+                // 方法1: a.product-link (従来のセレクタ)
                 document.querySelectorAll('a.product-link').forEach(el => {
                     const href = el.getAttribute('href') || '';
                     if (!href.match(/\\/ec\\/used\\/\\d+/)) return;
+                    if (seen.has(href)) return;
+                    seen.add(href);
 
                     const text = el.innerText || '';
                     const lines = text.split('\\n').map(l => l.trim()).filter(l => l);
                     const priceMatch = text.match(/([\\d,]+)円/);
-                    const condMatch = text.match(/\\b([A-S]{1,2})\\b/);
-                    const storeMatch = text.match(/([^\\n]+(?:店|写真機店))/);
+                    const condMatch = text.match(/\\b(AA|AB|BB|B|A|C|S)\\b/);
 
                     if (priceMatch && lines[0]) {
                         results.push({
@@ -84,10 +88,38 @@ class KitamuraScraper:
                             price: parseInt(priceMatch[1].replace(/,/g, '')),
                             condition: condMatch ? condMatch[1] : '不明',
                             href: href,
-                            store_name: storeMatch ? storeMatch[1].trim() : '不明'
+                            store_name: '不明'
                         });
                     }
                 });
+
+                // 方法2: /ec/used/ を含む全てのaタグ (フォールバック)
+                if (results.length === 0) {
+                    document.querySelectorAll('a[href*="/ec/used/"]').forEach(el => {
+                        const href = el.getAttribute('href') || '';
+                        if (!href.match(/\\/ec\\/used\\/\\d+/)) return;
+                        if (seen.has(href)) return;
+
+                        // 親要素も含めてテキストを取得
+                        const container = el.closest('li, .product-card, [class*="product"], [class*="item"]') || el;
+                        const text = container.innerText || el.innerText || '';
+                        const lines = text.split('\\n').map(l => l.trim()).filter(l => l);
+                        const priceMatch = text.match(/([\\d,]+)円/);
+                        const condMatch = text.match(/\\b(AA|AB|BB|B|A|C|S)\\b/);
+
+                        if (priceMatch && lines[0] && lines[0].length > 5) {
+                            seen.add(href);
+                            results.push({
+                                name: lines[0],
+                                price: parseInt(priceMatch[1].replace(/,/g, '')),
+                                condition: condMatch ? condMatch[1] : '不明',
+                                href: href,
+                                store_name: '不明'
+                            });
+                        }
+                    });
+                }
+
                 return results;
             }
         """)

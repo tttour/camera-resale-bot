@@ -47,22 +47,25 @@ class MercariScraper:
         logger.info(f"  メルカリ検索: '{query}' → {url}")
 
         try:
-            page.goto(url, wait_until="networkidle", timeout=30000)
-            # 念のためさらに少し待機
-            page.wait_for_timeout(5000)
+            page.goto(url, wait_until="domcontentloaded", timeout=40000)
+            # JavaScriptの描画を十分待つ (GitHub Actionsは遅め)
+            page.wait_for_timeout(10000)
         except Exception as e:
             logger.warning(f"  メルカリ読み込みエラー: {e}")
-            # タイムアウトしても要素がある可能性があるので継続
+
+        # デバッグ用スクリーンショット
+        try:
+            page.screenshot(path="debug_mercari_actions.png", full_page=False)
+        except: pass
 
         # 商品項目を特定
-        # Mercari uses li[data-testid="item-cell"] for each item
         items_locator = page.locator('li[data-testid="item-cell"]')
-        
+
         sold_items = []
         try:
             count = items_locator.count()
             logger.info(f"  メルカリ項目数検出: {count}")
-            
+
             for i in range(min(count, max_items)):
                 item = items_locator.nth(i)
                 
