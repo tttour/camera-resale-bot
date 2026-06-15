@@ -87,17 +87,38 @@ def run_once(config: dict, test_mode: bool = False) -> list[dict]:
 
     try:
         with sync_playwright() as playwright:
-            # ブラウザ起動（1インスタンスで全処理）
             headless = config["settings"]["headless"]
-            browser = playwright.chromium.launch(headless=headless)
+            # Bot検知回避のためのブラウザ起動設定
+            browser = playwright.chromium.launch(
+                headless=headless,
+                args=[
+                    "--disable-blink-features=AutomationControlled",
+                    "--no-sandbox",
+                    "--disable-dev-shm-usage",
+                    "--disable-web-security",
+                    "--lang=ja-JP",
+                ]
+            )
             context = browser.new_context(
                 user_agent=(
                     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
                     "AppleWebKit/537.36 (KHTML, like Gecko) "
-                    "Chrome/120.0.0.0 Safari/537.36"
+                    "Chrome/125.0.0.0 Safari/537.36"
                 ),
                 viewport={"width": 1280, "height": 900},
+                locale="ja-JP",
+                timezone_id="Asia/Tokyo",
+                extra_http_headers={
+                    "Accept-Language": "ja-JP,ja;q=0.9,en-US;q=0.8,en;q=0.7",
+                },
             )
+            # navigator.webdriver を隠す（最重要のBot検知対策）
+            context.add_init_script("""
+                Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
+                Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3, 4, 5] });
+                Object.defineProperty(navigator, 'languages', { get: () => ['ja-JP', 'ja', 'en-US', 'en'] });
+                window.chrome = { runtime: {} };
+            """)
             kitamura_page = context.new_page()
             mercari_page = context.new_page()
 
